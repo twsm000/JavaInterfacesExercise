@@ -31,7 +31,6 @@ public class InstallmentPaymentService {
     }
 
     public void calculateInstallments() {
-        System.out.println("Installments: ");
         getPaymentCompany().calculateInstallments(contractInstallment);
     }
 }

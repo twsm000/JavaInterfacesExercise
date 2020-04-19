@@ -2,9 +2,11 @@ package application;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 
 import model.entities.Contract;
 import model.entities.ContractInstallment;
+import model.entities.Installment;
 import model.exceptions.InstallmentNumberBelowAllowedException;
 import model.services.InstallmentPaymentService;
 import model.services.PaypalPaymentService;
@@ -20,6 +22,13 @@ public class Program {
             contractInstallment, 
             new PaypalPaymentService()
         );
+        
+        System.out.println("Installments: ");        
         paymentService.calculateInstallments();
+        Iterator<Installment> installments = contractInstallment.getInstallments();
+        while (installments.hasNext()) {
+            Installment installment = (Installment) installments.next();
+            System.out.println(installment);
+        }
     }
 }
